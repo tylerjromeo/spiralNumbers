@@ -17,24 +17,24 @@ object Main {
                                  )
 
   //directions move counterclockwise
-  case object North extends Direction((x, y) => (x, y + 1))
-  case object West extends Direction((x, y) => (x - 1, y))
-  case object South extends Direction((x, y) => (x, y - 1))
-  case object East extends Direction((x, y) => (x + 1, y))
+  case object East extends Direction((x, y) => (x, y + 1))
+  case object South extends Direction((x, y) => (x - 1, y))
+  case object West extends Direction((x, y) => (x, y - 1))
+  case object North extends Direction((x, y) => (x + 1, y))
 
   def directionFromNumber(n: Int): Direction = {
     n % 4  match {
-      case 0 => West
-      case 1 => South
-      case 2 => East
-      case 3 => North
+      case 0 => East
+      case 1 => North
+      case 2 => West
+      case 3 => South
     }
   }
 
   //Because of "Math" we know that the number of spaces that need to be moved is 1, 1, 2, 2, 3, 3, 4, 4 etc.
   //Assuming the first direction is east (english reads left to right) lets build the set of directions we'll follow when
   //moving from position to position
-  val directions = Stream.from(1).map(x => (directionFromNumber(x), x/2)).flatMap{
+  val directions = Stream.from(0).map(x => (directionFromNumber(x), 1 + x/2)).flatMap{
     case (dir, n) => Stream.fill[Direction](n)(dir)
   }
 
@@ -71,7 +71,8 @@ object Main {
     */
   def sprint2DArray(numbers: Array[Array[Int]]): String = {
     val maxDigits = numbers.flatten.max.toString.length
-    numbers.map(_.map { x: Int => rightPad(maxDigits, x.toString) }.mkString(" ")).mkString("\n")
+    def toStringWithEmptyZero(i: Int): String = if (i==0) "" else i.toString
+    numbers.map(_.map { x: Int => rightPad(maxDigits, toStringWithEmptyZero(x)) }.mkString(" ").trim).mkString("\n")
   }
 
   def rightPad(length: Int, src: String): String = {

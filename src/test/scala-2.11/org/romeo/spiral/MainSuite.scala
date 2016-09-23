@@ -152,7 +152,22 @@ class MainSuite extends FunSuite {
     a(0)(2) = 5
     a(1)(2) = 6
     assert(Main.sprint2DArray(a) ==
-      "1  30 5 \n2  4  6 ")
+      """1  30 5
+        |2  4  6""".stripMargin)
+  }
+
+  test("test sprint array with 0s") {
+
+    val a = Array.ofDim[Int](2, 3)
+    a(0)(0) = 1
+    a(1)(0) = 2
+    a(0)(1) = 3
+    a(1)(1) = 0
+    a(0)(2) = 0
+    a(1)(2) = 0
+    assert(Main.sprint2DArray(a) ==
+      """1 3
+        |2""".stripMargin)
   }
 }
 
