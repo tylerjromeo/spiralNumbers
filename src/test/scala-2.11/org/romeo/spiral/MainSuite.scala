@@ -20,14 +20,14 @@ class MainSuite extends FunSuite {
   }
 
   test("test parameter 2") {
-    assert(Main.makeSpiral(1) ==
+    assert(Main.makeSpiral(2) ==
     """
       |1 2
     """.stripMargin.trim)
   }
 
   test("test parameter 3") {
-    assert(Main.makeSpiral(1) ==
+    assert(Main.makeSpiral(3) ==
       """
         |  3
         |1 2
@@ -35,7 +35,7 @@ class MainSuite extends FunSuite {
   }
 
   test("test parameter 4") {
-    assert(Main.makeSpiral(1) ==
+    assert(Main.makeSpiral(4) ==
       """
         |4 3
         |1 2
@@ -43,7 +43,7 @@ class MainSuite extends FunSuite {
   }
 
   test("test parameter 5") {
-    assert(Main.makeSpiral(1) ==
+    assert(Main.makeSpiral(5) ==
       """
         |5 4 3
         |  1 2
@@ -51,7 +51,7 @@ class MainSuite extends FunSuite {
   }
 
   test("test parameter 6") {
-    assert(Main.makeSpiral(1) ==
+    assert(Main.makeSpiral(6) ==
       """
         |5 4 3
         |6 1 2
@@ -59,7 +59,7 @@ class MainSuite extends FunSuite {
   }
 
   test("test parameter 9") {
-    assert(Main.makeSpiral(1) ==
+    assert(Main.makeSpiral(9) ==
       """
         |5 4 3
         |6 1 2
@@ -68,7 +68,7 @@ class MainSuite extends FunSuite {
   }
 
   test("test parameter 15") {
-    assert(Main.makeSpiral(1) ==
+    assert(Main.makeSpiral(15) ==
       """   15 14 13
         |5  4  3  12
         |6  1  2  11
@@ -77,7 +77,7 @@ class MainSuite extends FunSuite {
   }
 
   test("test parameter 17") {
-    assert(Main.makeSpiral(1) ==
+    assert(Main.makeSpiral(17) ==
       """17 16 15 14 13
         |   5  4  3  12
         |   6  1  2  11
@@ -86,7 +86,7 @@ class MainSuite extends FunSuite {
   }
 
   test("test parameter 21") {
-    assert(Main.makeSpiral(1) ==
+    assert(Main.makeSpiral(21) ==
       """17 16 15 14 13
         |18 5  4  3  12
         |19 6  1  2  11
@@ -96,7 +96,7 @@ class MainSuite extends FunSuite {
   }
 
   test("test parameter 27") {
-    assert(Main.makeSpiral(1) ==
+    assert(Main.makeSpiral(27) ==
       """17 16 15 14 13
         |18 5  4  3  12
         |19 6  1  2  11
