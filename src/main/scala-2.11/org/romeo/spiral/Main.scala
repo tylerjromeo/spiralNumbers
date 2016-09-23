@@ -44,11 +44,11 @@ object Main {
     var (row, col) = findMidPoint(arrayLength)
     var count = 0
     while(count < num) {
-      a(row)(col) = num
-      directions(num - 1).move(row, col) match { //TODO just map this into the stream
+      count = count + 1
+      a(row)(col) = count
+      directions(count - 1).move(row, col) match { //TODO just map this into the stream
         case (x, y) => row = x; col = y
       }
-      count = count + 1
     }
     sprint2DArray(a)
   }
