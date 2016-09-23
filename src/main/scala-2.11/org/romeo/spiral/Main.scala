@@ -10,22 +10,17 @@ object Main {
 
   def main(args: Array[String]): Unit = {
     println(directions.take(20).toList)
-    println(North.next)
-    println(South.next)
-    println(East.next)
-    println(West.next)
   }
 
   sealed abstract class Direction(
-                                   val next: Direction,
                                    val move: (Int, Int) => (Int, Int)
                                  )
 
   //directions move counterclockwise
-  case object North extends Direction(West, (x, y) => (x, y + 1))
-  case object South extends Direction(East, (x, y) => (x, y - 1))
-  case object East extends Direction(North, (x, y) => (x + 1, y))
-  case object West extends Direction(South, (x, y) => (x - 1, y))
+  case object North extends Direction((x, y) => (x, y + 1))
+  case object West extends Direction((x, y) => (x - 1, y))
+  case object South extends Direction((x, y) => (x, y - 1))
+  case object East extends Direction((x, y) => (x + 1, y))
 
   def directionFromNumber(n: Int): Direction = {
     n % 4  match {
@@ -40,14 +35,21 @@ object Main {
   //Assuming the first direction is east (english reads left to right) lets build the set of directions we'll follow when
   //moving from position to position
   val directions = Stream.from(1).map(x => (directionFromNumber(x), x/2)).flatMap{
-    case (dir, n) => Stream.fill[Direction](n)(dir.next)
+    case (dir, n) => Stream.fill[Direction](n)(dir)
   }
 
   def makeSpiral(num: Int): String = {
     val arrayLength = scala.math.sqrt(num).ceil.toInt
     val a = Array.ofDim[Int](arrayLength, arrayLength)
     var (row, col) = findMidPoint(arrayLength)
-    a(row)(col) = 1
+    var count = 0
+    while(count < num) {
+      a(row)(col) = num
+      directions(num - 1).move(row, col) match { //TODO just map this into the stream
+        case (x, y) => row = x; col = y
+      }
+      count = count + 1
+    }
     sprint2DArray(a)
   }
 
@@ -58,7 +60,7 @@ object Main {
     * @return
     */
   def findMidPoint(size: Int): (Int, Int) = {
-    ((size.toFloat / 2.0).toInt, size / 2)
+    ((size.toFloat / 2.0).toInt - 1, size / 2 - 1)
   }
 
   /**
