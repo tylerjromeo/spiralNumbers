@@ -11,6 +11,7 @@ import org.scalatest._
 
 class MainSuite extends FunSuite {
 
+  //Main tests
   test("test parameter 1") {
     assert(Main.makeSpiral(1) ==
     """
@@ -104,5 +105,54 @@ class MainSuite extends FunSuite {
       """.stripMargin.trim)
   }
 
+  //String conversion Tests
+  test("test sprint array 1x1") {
+    val a = Array.ofDim[Int](1, 1)
+    a(0)(0) = 1
+    assert(Main.sprint2DArray(a) ==
+    """1""")
+  }
+
+  test("test sprint array 1x2") {
+    val a = Array.ofDim[Int](1, 2)
+    a(0)(0) = 1
+    a(0)(1) = 2
+    assert(Main.sprint2DArray(a) ==
+      """1 2""")
+  }
+
+  test("test sprint array 2 x 1") {
+    val a = Array.ofDim[Int](2, 1)
+    a(0)(0) = 1
+    a(1)(0) = 2
+    assert(Main.sprint2DArray(a) ==
+      """1
+        |2""".stripMargin)
+  }
+
+  test("test sprint array 2 x 3") {
+    val a = Array.ofDim[Int](2, 3)
+    a(0)(0) = 1
+    a(1)(0) = 2
+    a(0)(1) = 3
+    a(1)(1) = 4
+    a(0)(2) = 5
+    a(1)(2) = 6
+    assert(Main.sprint2DArray(a) ==
+      """1 3 5
+        |2 4 6""".stripMargin)
+  }
+
+  test("test sprint array 2 x 3, two digit") {
+    val a = Array.ofDim[Int](2, 3)
+    a(0)(0) = 1
+    a(1)(0) = 2
+    a(0)(1) = 30
+    a(1)(1) = 4
+    a(0)(2) = 5
+    a(1)(2) = 6
+    assert(Main.sprint2DArray(a) ==
+      "1  30 5 \n2  4  6 ")
+  }
 }
 
