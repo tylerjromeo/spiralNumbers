@@ -14,57 +14,43 @@ class MainSuite extends FunSuite {
   //Main tests
   test("test parameter 1") {
     assert(Main.makeSpiral(1) ==
-    """
-      |1
-    """.stripMargin.trim)
+    """1""".stripMargin)
   }
 
   test("test parameter 2") {
     assert(Main.makeSpiral(2) ==
-    """
-      |1 2
-    """.stripMargin.trim)
+    """1 2""".stripMargin)
   }
 
   test("test parameter 3") {
     assert(Main.makeSpiral(3) ==
-      """
-        |  3
-        |1 2
-      """.stripMargin.trim)
+      """  3
+        |1 2""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 4") {
     assert(Main.makeSpiral(4) ==
-      """
-        |4 3
-        |1 2
-      """.stripMargin.trim)
+      """4 3
+        |1 2""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 5") {
     assert(Main.makeSpiral(5) ==
-      """
-        |5 4 3
-        |  1 2
-      """.stripMargin.trim)
+      """5 4 3
+        |  1 2 """.stripMargin.replace("\r", ""))
   }
 
   test("test parameter 6") {
     assert(Main.makeSpiral(6) ==
-      """
-        |5 4 3
-        |6 1 2
-      """.stripMargin.trim)
+      """5 4 3
+        |6 1 2""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 9") {
     assert(Main.makeSpiral(9) ==
-      """
-        |5 4 3
+      """5 4 3
         |6 1 2
-        |7 8 9
-      """.stripMargin.trim)
+        |7 8 9""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 15") {
@@ -72,8 +58,7 @@ class MainSuite extends FunSuite {
       """   15 14 13
         |5  4  3  12
         |6  1  2  11
-        |7  8  9  10
-      """.stripMargin.trim)
+        |7  8  9  10""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 17") {
@@ -81,8 +66,7 @@ class MainSuite extends FunSuite {
       """17 16 15 14 13
         |   5  4  3  12
         |   6  1  2  11
-        |   7  8  9  10
-      """.stripMargin.trim)
+        |   7  8  9  10""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 21") {
@@ -91,8 +75,7 @@ class MainSuite extends FunSuite {
         |18 5  4  3  12
         |19 6  1  2  11
         |20 7  8  9  10
-        |21
-      """.stripMargin.trim)
+        |21""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 27") {
@@ -101,33 +84,32 @@ class MainSuite extends FunSuite {
         |18 5  4  3  12
         |19 6  1  2  11
         |20 7  8  9  10 27
-        |21 22 23 24 25 26
-      """.stripMargin.trim)
+        |21 22 23 24 25 26""".stripMargin.replace("\r", ""))
   }
 
   //String conversion Tests
   test("test sprint array 1x1") {
     val a = Array.ofDim[Int](1, 1)
     a(0)(0) = 1
-    assert(Main.sprint2DArray(a) ==
-    """1""")
+    val expected = """1"""
+    assert(expected == Main.sprint2DArray(a))
   }
 
   test("test sprint array 1x2") {
     val a = Array.ofDim[Int](1, 2)
     a(0)(0) = 1
     a(0)(1) = 2
-    assert(Main.sprint2DArray(a) ==
-      """1 2""")
+    val expected = """1 2"""
+    assert(expected == Main.sprint2DArray(a))
   }
 
   test("test sprint array 2 x 1") {
     val a = Array.ofDim[Int](2, 1)
     a(0)(0) = 1
     a(1)(0) = 2
-    assert(Main.sprint2DArray(a) ==
-      """1
-        |2""".stripMargin)
+    val expected = """1
+                     |2""".stripMargin.replace("\r", "")
+    assert(expected == Main.sprint2DArray(a))
   }
 
   test("test sprint array 2 x 3") {
@@ -138,9 +120,9 @@ class MainSuite extends FunSuite {
     a(1)(1) = 4
     a(0)(2) = 5
     a(1)(2) = 6
-    assert(Main.sprint2DArray(a) ==
-      """1 3 5
-        |2 4 6""".stripMargin)
+    val expected = """1 3 5
+                     |2 4 6""".stripMargin.replace("\r", "")
+    assert(expected == Main.sprint2DArray(a))
   }
 
   test("test sprint array 2 x 3, two digit") {
@@ -151,9 +133,9 @@ class MainSuite extends FunSuite {
     a(1)(1) = 4
     a(0)(2) = 5
     a(1)(2) = 6
-    assert(Main.sprint2DArray(a) ==
-      """1  30 5
-        |2  4  6""".stripMargin)
+    val expected = """1  30 5
+                     |2  4  6""".stripMargin.replace("\r", "")
+    assert(expected == Main.sprint2DArray(a))
   }
 
   test("test sprint array with 0s") {
@@ -165,9 +147,9 @@ class MainSuite extends FunSuite {
     a(1)(1) = 0
     a(0)(2) = 0
     a(1)(2) = 0
-    assert(Main.sprint2DArray(a) ==
-      """1 3
-        |2""".stripMargin)
+    val expected = """1 3
+                     |2""".stripMargin.replace("\r", "")
+    assert(expected == Main.sprint2DArray(a))
   }
 }
 
