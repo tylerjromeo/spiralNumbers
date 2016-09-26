@@ -24,67 +24,67 @@ class MainSuite extends FunSuite {
 
   test("test parameter 3") {
     assert(Main.makeSpiral(3) ==
-      """  3
-        |1 2""".stripMargin.replace("\r", ""))
+      """1 2
+        |  3""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 4") {
     assert(Main.makeSpiral(4) ==
-      """4 3
-        |1 2""".stripMargin.replace("\r", ""))
+      """1 2
+        |4 3""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 5") {
     assert(Main.makeSpiral(5) ==
-      """5 4 3
-        |  1 2 """.stripMargin.replace("\r", ""))
+      """  1 2
+        |5 4 3""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 6") {
     assert(Main.makeSpiral(6) ==
-      """5 4 3
-        |6 1 2""".stripMargin.replace("\r", ""))
+      """6 1 2
+        |5 4 3""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 9") {
     assert(Main.makeSpiral(9) ==
-      """5 4 3
+      """7 8 9
         |6 1 2
-        |7 8 9""".stripMargin.replace("\r", ""))
+        |5 4 3""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 15") {
     assert(Main.makeSpiral(15) ==
-      """   15 14 13
-        |5  4  3  12
+      """7  8  9  10
         |6  1  2  11
-        |7  8  9  10""".stripMargin.replace("\r", ""))
+        |5  4  3  12
+        |   15 14 13""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 17") {
     assert(Main.makeSpiral(17) ==
-      """17 16 15 14 13
-        |   5  4  3  12
+      """   7  8  9  10
         |   6  1  2  11
-        |   7  8  9  10""".stripMargin.replace("\r", ""))
+        |   5  4  3  12
+        |17 16 15 14 13""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 21") {
     assert(Main.makeSpiral(21) ==
-      """17 16 15 14 13
-        |18 5  4  3  12
-        |19 6  1  2  11
+      """21
         |20 7  8  9  10
-        |21""".stripMargin.replace("\r", ""))
+        |19 6  1  2  11
+        |18 5  4  3  12
+        |17 16 15 14 13""".stripMargin.replace("\r", ""))
   }
 
   test("test parameter 27") {
     assert(Main.makeSpiral(27) ==
-      """17 16 15 14 13
-        |18 5  4  3  12
-        |19 6  1  2  11
+      """21 22 23 24 25 26
         |20 7  8  9  10 27
-        |21 22 23 24 25 26""".stripMargin.replace("\r", ""))
+        |19 6  1  2  11
+        |18 5  4  3  12
+        |17 16 15 14 13""".stripMargin.replace("\r", ""))
   }
 
   //String conversion Tests

@@ -18,16 +18,16 @@ object Main {
 
   //directions move counterclockwise
   case object East extends Direction((x, y) => (x, y + 1))
-  case object South extends Direction((x, y) => (x - 1, y))
+  case object South extends Direction((x, y) => (x + 1, y))
   case object West extends Direction((x, y) => (x, y - 1))
-  case object North extends Direction((x, y) => (x + 1, y))
+  case object North extends Direction((x, y) => (x - 1, y))
 
   def directionFromNumber(n: Int): Direction = {
     n % 4  match {
       case 0 => East
-      case 1 => North
+      case 1 => South
       case 2 => West
-      case 3 => South
+      case 3 => North
     }
   }
 
@@ -60,7 +60,7 @@ object Main {
     * @return
     */
   def findMidPoint(size: Int): (Int, Int) = {
-    ((size.toFloat / 2.0).toInt - 1, size / 2 - 1)
+    (size / 2, size / 2)
   }
 
   /**
@@ -72,7 +72,7 @@ object Main {
   def sprint2DArray(numbers: Array[Array[Int]]): String = {
     val maxDigits = numbers.flatten.max.toString.length
     def toStringWithEmptyZero(i: Int): String = if (i==0) "" else i.toString
-    numbers.map(_.map { x: Int => rightPad(maxDigits, toStringWithEmptyZero(x)) }.mkString(" ").trim).mkString("\n")
+    numbers.map(_.map { x: Int => rightPad(maxDigits, toStringWithEmptyZero(x)) }.mkString(" ").trim).filter(!_.isEmpty).mkString("\n")
   }
 
   def rightPad(length: Int, src: String): String = {
