@@ -147,8 +147,7 @@ class MainSuite extends FunSuite {
     a(1)(1) = 0
     a(0)(2) = 0
     a(1)(2) = 0
-    val expected = """1 3
-                     |2""".stripMargin.replace("\r", "")
+    val expected = "1 3  \n2    "
     assert(expected == Main.sprint2DArray(a))
   }
 }

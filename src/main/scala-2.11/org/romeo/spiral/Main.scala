@@ -71,8 +71,13 @@ object Main {
     */
   def sprint2DArray(numbers: Array[Array[Int]]): String = {
     val maxDigits = numbers.flatten.max.toString.length
-    def toStringWithEmptyZero(i: Int): String = if (i==0) "" else i.toString
-    numbers.map(_.map { x: Int => rightPad(maxDigits, toStringWithEmptyZero(x)) }.mkString(" ").trim).filter(!_.isEmpty).mkString("\n")
+    val placeholderCharacter = "?"
+    def toStringWithEmptyZero(i: Int): String = if (i==0) placeholderCharacter else i.toString
+    numbers.map(
+      _.map{
+        x: Int => rightPad(maxDigits, toStringWithEmptyZero(x))
+      }.mkString(" ").trim.replace(placeholderCharacter, " ")
+    ).filter(!_.isEmpty).mkString("\n")
   }
 
   def rightPad(length: Int, src: String): String = {
