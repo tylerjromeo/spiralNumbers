@@ -78,7 +78,7 @@ object Main {
       _.map{
         x: Int => rightPad(maxDigits, toStringWithEmptyZero(x))
       }.mkString(" ").trim.replace(placeholderCharacter, " ")
-    ).filter(!_.isEmpty).mkString("\n")
+    ).filter(!_.trim.isEmpty).mkString("\n")
   }
 
   def rightPad(length: Int, src: String): String = {

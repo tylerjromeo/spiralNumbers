@@ -71,20 +71,11 @@ class MainSuite extends FunSuite {
 
   test("test parameter 21") {
     assert(Main.makeSpiral(21) ==
-      """21
-        |20 7  8  9  10
-        |19 6  1  2  11
-        |18 5  4  3  12
-        |17 16 15 14 13""".stripMargin.replace("\r", ""))
+      "21           \n20 7  8  9  10\n19 6  1  2  11\n18 5  4  3  12\n17 16 15 14 13")
   }
 
   test("test parameter 27") {
-    assert(Main.makeSpiral(27) ==
-      """21 22 23 24 25 26
-        |20 7  8  9  10 27
-        |19 6  1  2  11
-        |18 5  4  3  12
-        |17 16 15 14 13""".stripMargin.replace("\r", ""))
+    assert(Main.makeSpiral(27) == "21 22 23 24 25 26\n20 7  8  9  10 27\n19 6  1  2  11  \n18 5  4  3  12  \n17 16 15 14 13  ")
   }
 
   //String conversion Tests
