@@ -60,7 +60,8 @@ object Main {
     * @return
     */
   def findMidPoint(size: Int): (Int, Int) = {
-    (size / 2, size / 2)
+    val point = (size + 1) / 2 - 1
+    (point, point)
   }
 
   /**
