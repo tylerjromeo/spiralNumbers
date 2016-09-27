@@ -41,14 +41,11 @@ object Main {
   def makeSpiral(num: Int): String = {
     val arrayLength = scala.math.sqrt(num).ceil.toInt
     val a = Array.ofDim[Int](arrayLength, arrayLength)
-    var (row, col) = findMidPoint(arrayLength)
-    var count = 0
-    while(count < num) {
-      count = count + 1
-      a(row)(col) = count
-      directions(count - 1).move(row, col) match { //TODO just map this into the stream
-        case (x, y) => row = x; col = y
-      }
+    val coordinateOrder = directions.take(num - 1).foldLeft(List[(Int, Int)](findMidPoint(arrayLength))){
+      (coords, dir) => coords ::: List(dir.move.tupled(coords.last))
+    }
+    coordinateOrder.zipWithIndex.foreach{
+      case ((row, column), count) => a(row)(column) = count + 1
     }
     sprint2DArray(a)
   }
